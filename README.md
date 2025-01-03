@@ -2,6 +2,7 @@
 This README provides a guide on how to generate SSH keys for secure access to GitHub.
 
 **What are SSH Keys?**
+
 SSH stands for Secure Shell.
 SSH keys are a crucial part of the SSH protocol, enabling secure and passwordless authentication for remote access to computers.
 SSH keys are cryptographic key pairs used for secure authentication. They consist of:
