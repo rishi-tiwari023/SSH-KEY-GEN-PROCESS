@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH KEY GENERATION</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div {}
+
+        p {
+            padding-left: 15px;
+        }
+
+        div {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        #extension-mmplj {
+            border: none;
+            border-radius: none;
+        }
+
+        li {
+            font-weight: 700;
+        }
+
+        ul li {
+            font-weight: 300;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Instructions to Generate SSH Keys. </h1>
+
+
+    <div>
+        <h2><b>STEP 1: </b>Generate a New SSH Key</h2>
+        <p><b>&#x2192;</b>Create a new SSH key for GitHub.</p>
+        <h3> &#10070; &nbsp;Command:</h3>
+        <p>&#x2192; ssh-keygen -t ed25519 -C "your_email@example.com"</p>
+        <h4>&#10070; Explanation:</h4>
+        <ul>
+            <li>ssh-keygen: The command to generate SSH keys.</li>
+            <li>-t ed25519: Specifies the type of key. Ed25519 is modern and secure. If your system doesn't support it,
+                use -t
+                rsa -b 4096 for a 4096-bit RSA key.</li>
+            <li>-C "your_email@example.com": Adds a label (your email) to identify the key</li>
+        </ul>
+        <h4>&#10070; Prompt:</h4>
+        <p>&#x2192; Enter file in which to save the key (/home/your_user/.ssh/id_ed25519):</p>
+        <h4>&#10070; Action</h4>
+        <ul>
+            <li>If you want to overwrite the existing key, type the path of the existing key (e.g.,
+                /home/your_user/.ssh/id_ed25519) and press Enter.</li>
+            <li>If you're overwriting the default location, simply press Enter.</li>
+        </ul>
+    </div>
+
+
+    <div>
+        <h2>STEP 2: Confirm Overwrite</h2>
+        <p>&#x2192; When prompted to overwrite the file, confirm:</p>
+        <h4>&#10070; Prompt :</h4>
+        <p>&#x2192; /home/your_user/.ssh/id_ed25519 already exists.
+            Overwrite (y/n)?</p>
+        <h4>&#10070; Action :</h4>
+        <p>&#x2192; Type y and press Enter to overwrite the existing file.</p>
+    </div>
+
+
+    <div>
+        <h2>STEP 3: Continue with SSH Key Setup</h2>
+        <p>&#x2192; After overwriting, follow these steps to ensure the new key is properly configured:
+        </p>
+        <ol>
+            <li>Start the SSH Agent:</li>
+            <p>eval "$(ssh-agent -s)"</p>
+            <li>Add the New Key to the Agent:</li>
+            <p>ssh-add ~/.ssh/id_ed25519</p>
+            <li>Copy the New Public Key:</li>
+            <p>cat ~/.ssh/id_ed25519.pub</p>
+            <li>Update GitHub:</li>
+            <ul>
+                <li>Log in to your GitHub account.
+                </li>
+                <li>Go to Settings > SSH and GPG keys > New SSH key.</li>
+
+                <li>Paste the copied public key into the "Key" field and give it a title.</li>
+                <li>Click Add SSH Key.</li>
+            </ul>
+        </ol>
+    </div>
+
+
+    <div>
+        <h2>Test the Connection</h2>
+        <h4>&#10070; Command:</h4>
+        <p>&#x2192; ssh -T git@github.com</p>
+
+        <h4>&#10070; Expected Output:</h4>
+        <p>&#x2192; Hi username! You've successfully authenticated, but GitHub does not provide shell access.</p>
+    </div>
+
+
+    <div>
+        <h2>Example of a Public SSH Key</h2>
+        <p>&#x2192; ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICJ4kciWyt9SbOXkD7+7IbqZvlpF9pE1xUsU1gBRk3eB
+            your_email@example.com
+        </p>
+        <h4>&#10070; Explanation:
+        </h4>
+        <ul>
+            <li>Confirms that your SSH key is correctly set up and connected to your GitHub account. </li>
+        </ul>
+    </div>
+
+
+    <h2>That's All...
+        <br><b>-- Rishi ❤️</b>
+    </h2>
+</body>
+
+</html>
